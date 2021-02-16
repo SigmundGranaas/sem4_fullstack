@@ -1,0 +1,22 @@
+#This is docker-compose for running DB for app, which runs from idea:
+#- Connection URL:  jdbc:mysql://0.0.0.0:13306/DOCKERDB, login=root, password=root
+#- App is available by http://localhost:8080/entitybus/post
+version: "2.1"
+
+
+volumes:
+  db_data: {}
+
+services:
+  db:
+    image: mariadb:10.5
+    container_name: db
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
